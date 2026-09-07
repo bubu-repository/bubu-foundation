@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bubu Foundation
 
-## Getting Started
+The alumni network for BUBU, a cultural intelligence agency — a directory of
+ex-BUBU expertise, profiles, and a board for collaboration and investment
+opportunities. Built with Next.js (App Router), Tailwind CSS, Framer Motion,
+and Supabase (Postgres + magic-link auth).
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app runs fully without Supabase configured: Home works as-is, and
+Directory/Collaborate show example data with a small banner. Auth-gated
+pages (Join, post an opportunity, edit profile) show a "connect Supabase"
+notice instead of a form.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Connecting Supabase
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a project at [supabase.com](https://supabase.com).
+2. In the SQL editor, run `supabase/schema.sql`, then `supabase/seed.sql`.
+3. Copy `.env.local.example` to `.env.local` and fill in your project's URL
+   and anon key (Project Settings → API).
+4. In Supabase, go to Authentication → URL Configuration and add
+   `http://localhost:3000/auth/callback` to the redirect allow-list (add
+   your Vercel URL(s) there too once deployed).
+5. Restart `npm run dev` — Directory/Collaborate now show live data, and
+   `/join` sends real magic-link emails.
 
-## Learn More
+## Deploying to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+1. Push this repo to GitHub.
+2. Import it into Vercel.
+3. Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` as
+   environment variables for Production and Preview.
+4. Add the deployed URL(s) to Supabase's Auth redirect allow-list.
+5. Deploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/` — routes (App Router): home, directory, collaborate, join, profile,
+  auth callback.
+- `components/` — UI, organized by area (`hero/`, `directory/`,
+  `collaborate/`, `profile/`, `join/`, `ui/`).
+- `lib/` — Supabase clients, data-fetching (`lib/data/`), types, validation,
+  and the seed/fallback content (`lib/seed-source.ts`, `lib/fallback-data.ts`).
+- `supabase/` — `schema.sql` and `seed.sql` to run in the Supabase SQL editor.

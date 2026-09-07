@@ -1,26 +1,138 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Full-strength orange survives as an accent only — buttons, focus
+     states, small callouts. Never a background fill. */
+  --color-brand: #ff5900;
+  --color-brand-deep: #f15a24;
+
+  --color-ink: #111111;
+  --color-body: #666666;
+  --color-grey-dark: #434343;
+  --color-grey: #8a8a8a;
+  --color-grey-lt: #b7b7b7;
+  --color-line: #cccccc;
+  --color-line-lt: #e4e4e4;
+
+  /* Warm cream paper — Foundation's own identity within the BUBU family,
+     airier and warmer than bubu-events' cooler #f4f4f2. */
+  --color-paper: #faf7f2;
+  --color-card: #ffffff;
+  --color-surface: #f3f1ec;
+  --color-surface-orange: #fdeee3;
+
+  --font-display: var(--font-bebas);
+  --font-body: var(--font-poppins);
+
+  --radius-input: 12px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Strong custom curves, not the built-in CSS easings — those read as
+     accidental rather than intentional. Never ease-in on UI: it delays
+     the first frame, the exact moment the eye is on the element. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(1000px 650px at 88% -8%, rgba(255, 89, 0, 0.07), transparent 60%),
+    radial-gradient(800px 600px at -10% 30%, rgba(138, 138, 138, 0.08), transparent 60%),
+    #faf7f2;
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Frosted glass panel used for hero cards and floating UI mockups. */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 32px rgba(17, 17, 17, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* One authored entrance: content settles upward as the page mounts or
+   scrolls into view. @starting-style keeps the visible state as the
+   default, so content is never invisible if the animation never runs. */
+.rise {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 520ms var(--ease-out),
+    transform 520ms var(--ease-out);
+  transition-delay: var(--rise-delay, 0ms);
+}
+
+@starting-style {
+  .rise {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* Press feedback. Any pushable element answers within 160ms so the
+   interface reads as listening. Transform only: skips layout and paint. */
+.press {
+  transition: transform 160ms var(--ease-out);
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+.ring-focus:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: inherit;
+}
+
+/* Gentle infinite float for hero mini-cards — on-screen movement, not an
+   entrance/exit, so ease-in-out rather than ease-out or linear. */
+.float {
+  animation: float-loop var(--float-duration, 5.5s) var(--ease-in-out) infinite alternate;
+}
+
+@keyframes float-loop {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+/* Staggered reveal for list/grid items: pass --stagger-index from markup. */
+.stagger-item {
+  animation-delay: calc(var(--stagger-index, 0) * 60ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    transition: none;
+  }
+
+  .press:active {
+    transform: none;
+  }
+
+  .float {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
