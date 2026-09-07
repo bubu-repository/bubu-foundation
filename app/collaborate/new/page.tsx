@@ -40,7 +40,7 @@ export default async function NewOpportunityPage() {
           href="/profile/edit"
           className="ring-focus mt-5 inline-block text-sm font-semibold text-brand-deep hover:underline"
         >
-          Build your profile →
+          Build your profile <span className="link-arrow">→</span>
         </Link>
       </div>
     );

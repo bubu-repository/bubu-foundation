@@ -168,6 +168,63 @@ body {
   scroll-snap-align: start;
 }
 
+/* Infinite marquee ticker band (section divider). Two duplicated tracks
+   scroll edge-to-edge so the loop never shows a seam. linear, because this
+   is genuinely constant motion, not an entrance. */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Arrow nudge on hover for text links ("Show all →"). */
+.link-arrow {
+  display: inline-block;
+  transition: transform 200ms var(--ease-out);
+}
+
+a:hover > .link-arrow {
+  transform: translateX(4px);
+}
+
+/* Accordion chevron (FAQ). Native <details>/<summary> — no JS state, no
+   accessibility gaps, matches "good defaults" over a custom implementation. */
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-icon {
+  transition: transform 250ms var(--ease-in-out);
+}
+
+details[open] .accordion-icon {
+  transform: rotate(45deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rise {
     transition: none;
@@ -184,6 +241,10 @@ body {
   .draw-in {
     transition: none;
     stroke-dashoffset: var(--dash-target);
+  }
+
+  .marquee-track {
+    animation: none;
   }
 
   *,

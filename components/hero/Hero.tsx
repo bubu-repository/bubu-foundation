@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/Button";
 import { HeroSearch } from "@/components/hero/HeroSearch";
+import { HeroParallax } from "@/components/hero/HeroParallax";
 import { FloatingCard } from "@/components/hero/FloatingCard";
 import { AlumniJoinedCard } from "@/components/hero/AlumniJoinedCard";
 import { MatchCard } from "@/components/hero/MatchCard";
@@ -49,39 +50,41 @@ export function Hero({ alumniCount }: { alumniCount: number }) {
 
       {/* Colabs/Clapsy-style floating UI cards — decorative, hidden on small screens to avoid crowding the headline. */}
       <div className="pointer-events-none absolute inset-0 hidden select-none md:block" aria-hidden>
-        <div className="relative mx-auto h-full max-w-6xl">
-          <FloatingCard className="pointer-events-auto absolute left-2 top-12" delay={100} floatDuration={5.2}>
-            <AlumniJoinedCard />
-          </FloatingCard>
+        <HeroParallax>
+          <div className="relative mx-auto h-full max-w-6xl">
+            <FloatingCard className="pointer-events-auto absolute left-2 top-12" delay={100} floatDuration={5.2}>
+              <AlumniJoinedCard />
+            </FloatingCard>
 
-          <FloatingCard
-            className="pointer-events-auto absolute right-0 top-6 hidden lg:block"
-            delay={220}
-            floatDuration={6.4}
-          >
-            <RelevanceBadge />
-          </FloatingCard>
+            <FloatingCard
+              className="pointer-events-auto absolute right-0 top-6 hidden lg:block"
+              delay={220}
+              floatDuration={6.4}
+            >
+              <RelevanceBadge />
+            </FloatingCard>
 
-          <FloatingCard className="pointer-events-auto absolute left-8 bottom-4" delay={340} floatDuration={4.8}>
-            <MatchCard />
-          </FloatingCard>
+            <FloatingCard className="pointer-events-auto absolute left-8 bottom-4" delay={340} floatDuration={4.8}>
+              <MatchCard />
+            </FloatingCard>
 
-          <FloatingCard
-            className="pointer-events-auto absolute right-4 bottom-16"
-            delay={460}
-            floatDuration={5.9}
-          >
-            <OpportunityMiniCard />
-          </FloatingCard>
+            <FloatingCard
+              className="pointer-events-auto absolute right-4 bottom-16"
+              delay={460}
+              floatDuration={5.9}
+            >
+              <OpportunityMiniCard />
+            </FloatingCard>
 
-          <FloatingCard
-            className="pointer-events-auto absolute right-24 top-1/2 hidden xl:block"
-            delay={580}
-            floatDuration={7}
-          >
-            <ContactChannelsCard />
-          </FloatingCard>
-        </div>
+            <FloatingCard
+              className="pointer-events-auto absolute right-24 top-1/2 hidden xl:block"
+              delay={580}
+              floatDuration={7}
+            >
+              <ContactChannelsCard />
+            </FloatingCard>
+          </div>
+        </HeroParallax>
       </div>
     </section>
   );

@@ -42,7 +42,7 @@ export function BrowseByExpertiseSection({
                   href={`/directory?category=${category.slug}`}
                   className="ring-focus shrink-0 text-sm font-semibold text-brand-deep hover:underline"
                 >
-                  Show all →
+                  Show all <span className="link-arrow">→</span>
                 </Link>
               </div>
 

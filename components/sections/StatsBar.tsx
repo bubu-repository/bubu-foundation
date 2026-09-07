@@ -16,14 +16,14 @@ export function StatsBar({
   ];
 
   return (
-    <section className="border-y border-line-lt/60 px-6 py-14">
-      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 text-center sm:grid-cols-3">
+    <section className="bg-ink px-6 py-16 md:py-20">
+      <div className="mx-auto grid max-w-4xl grid-cols-1 gap-10 text-center sm:grid-cols-3">
         {stats.map((stat) => (
           <div key={stat.label}>
-            <p className="font-display text-5xl tracking-wide text-brand md:text-6xl">
+            <p className="font-display text-6xl tracking-wide text-brand md:text-7xl">
               <CountUp target={stat.value} suffix={stat.suffix} />
             </p>
-            <p className="mt-2 text-sm text-grey-dark">{stat.label}</p>
+            <p className="mt-2 text-sm text-grey-lt">{stat.label}</p>
           </div>
         ))}
       </div>

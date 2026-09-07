@@ -1,9 +1,11 @@
 import { Hero } from "@/components/hero/Hero";
+import { Marquee } from "@/components/ui/Marquee";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { BrowseByExpertiseSection } from "@/components/sections/BrowseByExpertiseSection";
 import { VisionSection } from "@/components/sections/VisionSection";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { FAQSection } from "@/components/sections/FAQSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { getExpertiseCategories } from "@/lib/data/categories";
 import { getDirectoryProfiles } from "@/lib/data/profiles";
@@ -23,6 +25,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero alumniCount={profiles.length} />
+      <Marquee text="MOVEMENTS, NOT MOMENTS" />
       <StatsBar
         alumniCount={profiles.length}
         categoryCount={categories.length}
@@ -32,6 +35,8 @@ export default async function HomePage() {
       <VisionSection />
       <HowItWorksSection />
       <TestimonialsSection testimonials={testimonials} />
+      <Marquee text="JOIN THE NETWORK" tone="dark" />
+      <FAQSection />
       <CTASection />
     </>
   );
