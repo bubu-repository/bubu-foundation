@@ -30,6 +30,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/ayukartikasari",
     whatsapp_number: "+6281234500001",
     portfolio_links: ["https://ayukartika.studio", "https://linkedin.com/in/ayukartikasari/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: true,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000002",
@@ -41,6 +45,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/yogaprasetyo",
     whatsapp_number: "+6281234500002",
     portfolio_links: ["https://yogawrites.com", "https://instagram.com/yoga.writes"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000003",
@@ -52,6 +60,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/dindalarasati",
     whatsapp_number: "+6281234500003",
     portfolio_links: ["https://behance.net/dindalarasati", "https://instagram.com/dinda.creates"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: true,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000004",
@@ -63,6 +75,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/michaeltanuwijaya",
     whatsapp_number: "+6281234500004",
     portfolio_links: ["https://linkedin.com/in/michaeltanuwijaya/details/featured"],
+    city: "Singapore",
+    country_code: "SG",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000005",
@@ -74,6 +90,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/nadyawijaya",
     whatsapp_number: "+6281234500005",
     portfolio_links: ["https://linkedin.com/in/nadyawijaya/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000006",
@@ -85,6 +105,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/farhanhidayat",
     whatsapp_number: "+6281234500006",
     portfolio_links: ["https://linkedin.com/in/farhanhidayat/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: false,
   },
   {
     id: "a1000000-0000-0000-0000-000000000007",
@@ -96,6 +120,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/salsabilaputri",
     whatsapp_number: "+6281234500007",
     portfolio_links: ["https://salsabila-insights.com"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000008",
@@ -107,6 +135,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/kevinsusanto",
     whatsapp_number: "+6281234500008",
     portfolio_links: ["https://instagram.com/kevin.digital"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000009",
@@ -118,6 +150,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/intanpermatasari",
     whatsapp_number: "+6281234500009",
     portfolio_links: ["https://linkedin.com/in/intanpermatasari/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: false,
   },
   {
     id: "a1000000-0000-0000-0000-000000000010",
@@ -129,6 +165,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/adityarahman",
     whatsapp_number: "+6281234500010",
     portfolio_links: ["https://linkedin.com/in/adityarahman/details/featured"],
+    city: "Singapore",
+    country_code: "SG",
+    is_featured: true,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000011",
@@ -140,6 +180,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/claraangelina",
     whatsapp_number: "+6281234500011",
     portfolio_links: ["https://linkedin.com/in/claraangelina/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000012",
@@ -151,6 +195,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/baguswirawan",
     whatsapp_number: "+6281234500012",
     portfolio_links: ["https://github.com/baguswirawan"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000013",
@@ -162,6 +210,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/sarahameliaputri",
     whatsapp_number: "+6281234500013",
     portfolio_links: ["https://linkedin.com/in/sarahameliaputri/details/featured"],
+    city: "Jakarta",
+    country_code: "ID",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
   {
     id: "a1000000-0000-0000-0000-000000000014",
@@ -173,6 +225,10 @@ export const SEED_PROFILES = [
     linkedin_url: "https://linkedin.com/in/rezapratama",
     whatsapp_number: "+6281234500014",
     portfolio_links: ["https://instagram.com/reza.writes"],
+    city: "Dubai",
+    country_code: "AE",
+    is_featured: false,
+    is_open_to_collaborate: true,
   },
 ] as const;
 
@@ -237,5 +293,80 @@ export const SEED_OPPORTUNITIES = [
       "A university marketing program is hosting a panel on cultural intelligence in SEA marketing.",
     looking_for: "One more alumni speaker with agency or brand-side experience.",
     status: "open" as const,
+  },
+] as const;
+
+export const SEED_TESTIMONIALS = [
+  {
+    id: "d1000000-0000-0000-0000-000000000001",
+    quote:
+      "I posted looking for a co-founder on a Tuesday. By Friday I was on a call with Ayu, and a month later we'd scoped the first client project together. The directory did in a week what my old network hadn't in a year.",
+    author_name: "Rangga Wibisono",
+    author_role: "Founder, independent strategy practice",
+    about_profile_id: profile(1),
+    sort_order: 1,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000002",
+    quote:
+      "Two years out of BUBU and I was still guessing at my next move. Aditya spent an hour walking through how he built his own path into venture, no agenda, just useful. That's the whole point of this network.",
+    author_name: "Sarah Amelia Putri",
+    author_role: "Junior Strategist",
+    about_profile_id: profile(10),
+    sort_order: 2,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000003",
+    quote:
+      "Reza's river-cleanup post landed in my feed and I signed up without thinking twice. Turned into three weekends, a short film, and a group chat that's still active. Movements, not moments, exactly as advertised.",
+    author_name: "Bella Anastasya",
+    author_role: "Freelance Photographer",
+    about_profile_id: profile(14),
+    sort_order: 3,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000004",
+    quote:
+      "We needed a rebrand fast and I didn't want to gamble on an unknown studio. Dinda's portfolio was right there on her profile, work I actually recognized from her BUBU days. Hired her within the week.",
+    author_name: "Wisnu Adi Nugroho",
+    author_role: "Operations Lead, hospitality group",
+    about_profile_id: profile(3),
+    sort_order: 4,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000005",
+    quote:
+      "Most alumni directories are a glorified contact list. This one actually pushes you toward a conversation — the WhatsApp link on every profile means you talk to a person the same day, not three weeks later.",
+    author_name: "Putri Handayani",
+    author_role: "Brand Consultant",
+    about_profile_id: null,
+    sort_order: 5,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000006",
+    quote:
+      "I found Kevin through the Digital & Social Media filter and messaged him about a campaign I was stuck on. He didn't just answer, he sent over the actual deck he used at BUBU. That's the alumni instinct this platform brings out.",
+    author_name: "Fajar Setiawan",
+    author_role: "Marketing Manager",
+    about_profile_id: profile(8),
+    sort_order: 6,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000007",
+    quote:
+      "Salsabila's investment post is exactly the kind of thing that never used to surface. Alumni building real things, quietly, until someone builds a place for it to be seen.",
+    author_name: "Michael Tanuwijaya",
+    author_role: "Brand Marketing Lead",
+    about_profile_id: profile(7),
+    sort_order: 7,
+  },
+  {
+    id: "d1000000-0000-0000-0000-000000000008",
+    quote:
+      "Farhan helped me untangle a client-ops mess in one call, purely because we'd both sat in the same BUBU standups years apart. There's a shorthand ex-BUBU people have with each other that this platform finally has a home for.",
+    author_name: "Devi Ratnasari",
+    author_role: "Client Services Manager",
+    about_profile_id: profile(6),
+    sort_order: 8,
   },
 ] as const;

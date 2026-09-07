@@ -88,6 +88,23 @@ body {
   transform: scale(0.97);
 }
 
+/* Hover lift for clickable cards. Gated behind a real pointer so touch
+   devices never get a hover state stuck after tap. */
+@media (hover: hover) and (pointer: fine) {
+  .card-hover {
+    transition:
+      transform 200ms var(--ease-out),
+      box-shadow 200ms var(--ease-out),
+      border-color 200ms var(--ease-out);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-line);
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.08);
+  }
+}
+
 .ring-focus:focus-visible {
   outline: 2px solid var(--color-ink);
   outline-offset: 3px;
@@ -128,6 +145,27 @@ body {
   .draw-in {
     stroke-dashoffset: var(--dash-full);
   }
+}
+
+/* Horizontal scroll rows (expertise browsing). Native scroll-snap, no JS
+   carousel needed. Scrollbar hidden — the edge fade + card peeking at the
+   right signals "more" without a visible scrollbar. */
+.scroll-row {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-row > * {
+  scroll-snap-align: start;
 }
 
 @media (prefers-reduced-motion: reduce) {

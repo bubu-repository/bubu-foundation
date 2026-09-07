@@ -4,11 +4,17 @@
 // real Supabase queries return (profile joined with its category / an
 // opportunity joined with its poster's profile).
 
-import { SEED_CATEGORIES, SEED_OPPORTUNITIES, SEED_PROFILES } from "@/lib/seed-source";
+import {
+  SEED_CATEGORIES,
+  SEED_OPPORTUNITIES,
+  SEED_PROFILES,
+  SEED_TESTIMONIALS,
+} from "@/lib/seed-source";
 import type {
   ExpertiseCategory,
   OpportunityWithProfile,
   ProfileWithCategory,
+  TestimonialWithProfile,
 } from "@/lib/types";
 
 const nowIso = new Date().toISOString();
@@ -47,5 +53,15 @@ export const FALLBACK_OPPORTUNITIES: OpportunityWithProfile[] = SEED_OPPORTUNITI
           whatsapp_number: poster.whatsapp_number,
         }
       : null,
+  };
+});
+
+export const FALLBACK_TESTIMONIALS: TestimonialWithProfile[] = SEED_TESTIMONIALS.map((t) => {
+  const about = t.about_profile_id ? profileById.get(t.about_profile_id) ?? null : null;
+  return {
+    ...t,
+    is_seed: true,
+    created_at: nowIso,
+    profiles: about ? { id: about.id, full_name: about.full_name, avatar_url: about.avatar_url } : null,
   };
 });

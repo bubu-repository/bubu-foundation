@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { HeroSearch } from "@/components/hero/HeroSearch";
 import { FloatingCard } from "@/components/hero/FloatingCard";
 import { AlumniJoinedCard } from "@/components/hero/AlumniJoinedCard";
 import { MatchCard } from "@/components/hero/MatchCard";
@@ -7,15 +8,15 @@ import { OpportunityMiniCard } from "@/components/hero/OpportunityMiniCard";
 import { ContactChannelsCard } from "@/components/hero/ContactChannelsCard";
 import { SITE } from "@/lib/constants";
 
-export function Hero() {
+export function Hero({ alumniCount }: { alumniCount: number }) {
   return (
     <section className="relative overflow-hidden px-6 pb-28 pt-20 md:pb-40 md:pt-28">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="rise text-xs font-semibold uppercase tracking-[0.3em] text-brand">
-          Cultural Intelligence Agency · Alumni Network
+        <p className="rise inline-flex items-center gap-2 rounded-pill border border-line-lt bg-card px-4 py-1.5 text-xs font-semibold text-grey-dark">
+          <span className="text-brand">{alumniCount}+</span> ex-BUBU experts already in the network
         </p>
         <h1
-          className="rise mt-5 font-display text-[56px] leading-[0.95] tracking-wide text-ink md:text-[76px]"
+          className="rise mt-6 font-display text-[56px] leading-[0.95] tracking-wide text-ink md:text-[76px]"
           style={{ "--rise-delay": "60ms" } as React.CSSProperties}
         >
           {SITE.vision}
@@ -27,13 +28,21 @@ export function Hero() {
           {SITE.belief} Bubu Foundation is where ex-BUBU people find each other, build on each
           other&apos;s work, and back what comes next.
         </p>
+
+        <div className="rise mt-9" style={{ "--rise-delay": "160ms" } as React.CSSProperties}>
+          <HeroSearch />
+        </div>
+
         <div
-          className="rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
-          style={{ "--rise-delay": "180ms" } as React.CSSProperties}
+          className="rise mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          style={{ "--rise-delay": "200ms" } as React.CSSProperties}
         >
-          <Button href="/join">Join the network</Button>
-          <Button href="/directory" variant="ghost">
-            Browse the directory
+          <Button href="/join" variant="ghost" size="sm">
+            Join the network
+          </Button>
+          <span className="hidden text-grey-lt sm:inline">·</span>
+          <Button href="/collaborate" variant="ghost" size="sm">
+            See open opportunities
           </Button>
         </div>
       </div>

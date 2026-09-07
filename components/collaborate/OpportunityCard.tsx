@@ -15,7 +15,7 @@ export function OpportunityCard({
 
   return (
     <div
-      className="stagger-item rise rounded-card border border-line-lt bg-card p-6"
+      className="stagger-item rise card-hover rounded-card border border-line-lt bg-card p-6"
       style={{ "--stagger-index": index } as React.CSSProperties}
     >
       <div className="flex items-start justify-between gap-4">
@@ -23,7 +23,7 @@ export function OpportunityCard({
           <Pill tone="brand">{opportunityCategoryLabel(opportunity.category)}</Pill>
           <h3 className="mt-3 font-display text-xl tracking-wide text-ink">{opportunity.title}</h3>
         </div>
-        <Pill tone={opportunity.status === "open" ? "open" : "closed"} className="shrink-0">
+        <Pill tone={opportunity.status === "open" ? "solid" : "closed"} className="shrink-0">
           {opportunity.status === "open" ? "Open" : "Closed"}
         </Pill>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
+import { useInView } from "@/lib/useInView";
 
 const STEPS = [
   {
@@ -25,34 +25,6 @@ const STEPS = [
     body: "Post or answer opportunities — projects, mentorship, investment, social good. Take it from there.",
   },
 ];
-
-// IntersectionObserver-driven reveal: @starting-style (used by .rise
-// elsewhere) only fires on DOM insertion, not on a later class toggle, so a
-// genuine scroll-into-view reveal needs an observer instead.
-function useInView<T extends HTMLElement>() {
-  const ref = useRef<T>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "-80px" }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, inView };
-}
 
 export function HowItWorksSection() {
   const { ref, inView } = useInView<HTMLDivElement>();

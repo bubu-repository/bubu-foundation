@@ -6,13 +6,14 @@ export function Pill({
   className,
 }: {
   children: React.ReactNode;
-  tone?: "neutral" | "brand" | "open" | "closed";
+  tone?: "neutral" | "brand" | "solid" | "outline" | "closed";
   className?: string;
 }) {
   const tones = {
     neutral: "bg-surface text-grey-dark",
     brand: "bg-surface-orange text-brand-deep",
-    open: "bg-surface-orange text-brand-deep",
+    solid: "bg-brand text-white",
+    outline: "bg-transparent text-ink border border-line",
     closed: "bg-surface text-grey",
   };
 

@@ -7,7 +7,7 @@ export function OpportunityMiniCard() {
         <p className="text-[13px] font-semibold leading-snug text-ink">
           Seeking co-founder — Culture Research Studio
         </p>
-        <Pill tone="open" className="shrink-0">
+        <Pill tone="solid" className="shrink-0">
           Open
         </Pill>
       </div>
