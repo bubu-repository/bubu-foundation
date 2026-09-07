@@ -41,25 +41,25 @@ export function Hero() {
       {/* Colabs/Clapsy-style floating UI cards — decorative, hidden on small screens to avoid crowding the headline. */}
       <div className="pointer-events-none absolute inset-0 hidden select-none md:block" aria-hidden>
         <div className="relative mx-auto h-full max-w-6xl">
-          <FloatingCard className="pointer-events-auto absolute left-2 top-12" delay={0.1} floatDuration={5.2}>
+          <FloatingCard className="pointer-events-auto absolute left-2 top-12" delay={100} floatDuration={5.2}>
             <AlumniJoinedCard />
           </FloatingCard>
 
           <FloatingCard
             className="pointer-events-auto absolute right-0 top-6 hidden lg:block"
-            delay={0.22}
+            delay={220}
             floatDuration={6.4}
           >
             <RelevanceBadge />
           </FloatingCard>
 
-          <FloatingCard className="pointer-events-auto absolute left-8 bottom-4" delay={0.34} floatDuration={4.8}>
+          <FloatingCard className="pointer-events-auto absolute left-8 bottom-4" delay={340} floatDuration={4.8}>
             <MatchCard />
           </FloatingCard>
 
           <FloatingCard
             className="pointer-events-auto absolute right-4 bottom-16"
-            delay={0.46}
+            delay={460}
             floatDuration={5.9}
           >
             <OpportunityMiniCard />
@@ -67,7 +67,7 @@ export function Hero() {
 
           <FloatingCard
             className="pointer-events-auto absolute right-24 top-1/2 hidden xl:block"
-            delay={0.58}
+            delay={580}
             floatDuration={7}
           >
             <ContactChannelsCard />

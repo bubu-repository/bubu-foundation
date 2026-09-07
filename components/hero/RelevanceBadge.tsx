@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 const SIZE = 64;
 const STROKE = 5;
 const RADIUS = (SIZE - STROKE) / 2;
@@ -20,7 +16,8 @@ export function RelevanceBadge() {
           stroke="var(--color-line-lt)"
           strokeWidth={STROKE}
         />
-        <motion.circle
+        <circle
+          className="draw-in"
           cx={SIZE / 2}
           cy={SIZE / 2}
           r={RADIUS}
@@ -29,9 +26,12 @@ export function RelevanceBadge() {
           strokeWidth={STROKE}
           strokeLinecap="round"
           strokeDasharray={CIRCUMFERENCE}
-          initial={{ strokeDashoffset: CIRCUMFERENCE }}
-          animate={{ strokeDashoffset: CIRCUMFERENCE * (1 - PERCENT) }}
-          transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.3 }}
+          style={
+            {
+              "--dash-full": CIRCUMFERENCE,
+              "--dash-target": CIRCUMFERENCE * (1 - PERCENT),
+            } as React.CSSProperties
+          }
         />
       </svg>
       <div>

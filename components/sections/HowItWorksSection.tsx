@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/cn";
 
 const STEPS = [
   {
@@ -25,8 +26,36 @@ const STEPS = [
   },
 ];
 
+// IntersectionObserver-driven reveal: @starting-style (used by .rise
+// elsewhere) only fires on DOM insertion, not on a later class toggle, so a
+// genuine scroll-into-view reveal needs an observer instead.
+function useInView<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-80px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, inView };
+}
+
 export function HowItWorksSection() {
-  const reduce = useReducedMotion();
+  const { ref, inView } = useInView<HTMLDivElement>();
 
   return (
     <section className="px-6 py-24 md:py-32">
@@ -38,20 +67,20 @@ export function HowItWorksSection() {
           </h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={ref} className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {STEPS.map((step, i) => (
-            <motion.div
+            <div
               key={step.n}
-              initial={reduce ? undefined : { opacity: 0, y: 16 }}
-              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1], delay: i * 0.07 }}
-              className="rounded-card border border-line-lt bg-card p-6"
+              className={cn(
+                "rounded-card border border-line-lt bg-card p-6 transition-[opacity,transform] duration-500 ease-out",
+                inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+              )}
+              style={{ transitionDelay: `${i * 70}ms` }}
             >
               <p className="font-display text-3xl text-brand">{step.n}</p>
               <h3 className="mt-3 font-display text-xl tracking-wide text-ink">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-body">{step.body}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

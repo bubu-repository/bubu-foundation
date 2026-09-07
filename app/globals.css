@@ -109,9 +109,25 @@ body {
   }
 }
 
-/* Staggered reveal for list/grid items: pass --stagger-index from markup. */
+/* Staggered reveal for list/grid items: pass --stagger-index from markup.
+   Feeds .rise's transition-delay (--rise-delay), not animation-delay —
+   .rise animates via @starting-style + transition, not @keyframes. */
 .stagger-item {
-  animation-delay: calc(var(--stagger-index, 0) * 60ms);
+  --rise-delay: calc(var(--stagger-index, 0) * 60ms);
+}
+
+/* One-time SVG stroke draw-in (RelevanceBadge). --dash-full is the circle's
+   circumference (the "empty" state); --dash-target is the filled state. */
+.draw-in {
+  stroke-dashoffset: var(--dash-target);
+  transition: stroke-dashoffset 900ms var(--ease-out);
+  transition-delay: 300ms;
+}
+
+@starting-style {
+  .draw-in {
+    stroke-dashoffset: var(--dash-full);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -125,6 +141,11 @@ body {
 
   .float {
     animation: none;
+  }
+
+  .draw-in {
+    transition: none;
+    stroke-dashoffset: var(--dash-target);
   }
 
   *,
