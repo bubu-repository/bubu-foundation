@@ -155,6 +155,10 @@ body {
   gap: 1.25rem;
   overflow-x: auto;
   scroll-snap-type: x proximity;
+  /* Without this, Chrome's snap engine treats the row's own left padding as
+     scrollable slack and auto-scrolls past it on load, shoving the first
+     card flush against the edge instead of showing the intended inset. */
+  scroll-padding-inline: 1.5rem;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
