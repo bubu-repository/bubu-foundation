@@ -15,9 +15,19 @@ export function OpportunityCard({
 
   return (
     <div
-      className="stagger-item rise card-hover rounded-card border border-line-lt bg-card p-6"
+      className="stagger-item rise card-hover rounded-card bg-card p-6 shadow-sm"
       style={{ "--stagger-index": index } as React.CSSProperties}
     >
+      {poster ? (
+        <Link
+          href={`/directory/${poster.id}`}
+          className="ring-focus mb-4 flex items-center gap-2 text-xs font-medium text-grey hover:text-brand-deep"
+        >
+          <Avatar name={poster.full_name} src={poster.avatar_url} size={22} />
+          Posted by {poster.full_name}
+        </Link>
+      ) : null}
+
       <div className="flex items-start justify-between gap-4">
         <div>
           <Pill tone="brand">{opportunityCategoryLabel(opportunity.category)}</Pill>
@@ -31,21 +41,9 @@ export function OpportunityCard({
       <p className="mt-3 text-sm leading-relaxed text-body">{opportunity.description}</p>
 
       {opportunity.looking_for ? (
-        <p className="mt-3 text-sm text-grey-dark">
+        <p className="mt-3 rounded-input bg-surface px-4 py-3 text-sm text-grey-dark">
           <span className="font-semibold text-ink">Looking for:</span> {opportunity.looking_for}
         </p>
-      ) : null}
-
-      {poster ? (
-        <div className="mt-5 flex items-center justify-between gap-3 border-t border-line-lt pt-4">
-          <Link
-            href={`/directory/${poster.id}`}
-            className="ring-focus flex items-center gap-2.5 text-sm font-medium text-ink hover:text-brand-deep"
-          >
-            <Avatar name={poster.full_name} src={poster.avatar_url} size={28} />
-            {poster.full_name}
-          </Link>
-        </div>
       ) : null}
     </div>
   );

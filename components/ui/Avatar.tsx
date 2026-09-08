@@ -34,9 +34,10 @@ export function Avatar({
     return (
       <div
         className={cn(
-          "flex shrink-0 items-center justify-center bg-surface-orange font-display text-brand-deep",
+          "flex shrink-0 items-center justify-center bg-brand font-display tracking-wide text-white",
           radius,
           dimClass,
+          size === "fill" ? "text-4xl md:text-5xl" : undefined,
           className
         )}
         style={{ ...dimStyle, fontSize: size === "fill" ? undefined : size * 0.4 }}
