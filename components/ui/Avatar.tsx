@@ -16,23 +16,30 @@ export function Avatar({
   name,
   src,
   size = 48,
+  shape = "circle",
   className,
 }: {
   name: string;
   src?: string | null;
-  size?: number;
+  size?: number | "fill";
+  shape?: "circle" | "square";
   className?: string;
 }) {
   const [broken, setBroken] = useState(false);
+  const radius = shape === "circle" ? "rounded-full" : "rounded-card";
+  const dimStyle = size === "fill" ? undefined : { width: size, height: size };
+  const dimClass = size === "fill" ? "h-full w-full" : undefined;
 
   if (!src || broken) {
     return (
       <div
         className={cn(
-          "flex shrink-0 items-center justify-center rounded-full bg-surface-orange font-display text-brand-deep",
+          "flex shrink-0 items-center justify-center bg-surface-orange font-display text-brand-deep",
+          radius,
+          dimClass,
           className
         )}
-        style={{ width: size, height: size, fontSize: size * 0.4 }}
+        style={{ ...dimStyle, fontSize: size === "fill" ? undefined : size * 0.4 }}
         aria-hidden
       >
         {initials(name)}
@@ -47,11 +54,9 @@ export function Avatar({
     <img
       src={src}
       alt={name}
-      width={size}
-      height={size}
       onError={() => setBroken(true)}
-      className={cn("shrink-0 rounded-full object-cover", className)}
-      style={{ width: size, height: size }}
+      className={cn("shrink-0 object-cover", radius, dimClass, className)}
+      style={dimStyle}
     />
   );
 }
