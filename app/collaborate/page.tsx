@@ -43,7 +43,7 @@ export default async function CollaboratePage({
         {opportunities.length === 0 ? (
           <EmptyState basePath="/collaborate" />
         ) : (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2">
             {opportunities.map((opportunity, i) => (
               <OpportunityCard key={opportunity.id} opportunity={opportunity} index={i % 6} />
             ))}
